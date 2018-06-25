@@ -1,0 +1,87 @@
+//******************************************************************************
+// Char position ranges from 0 to 19. Valid for LM016L & LM044L
+//******************************************************************************			
+
+#define		Ln1Ch0		0x80		//character position for line1, character 0
+#define		Ln1Ch1		0x81		//character position for line1, character 1
+#define		Ln1Ch2		0x82		//character position for line1, character 2
+#define		Ln1Ch3		0x83		//character position for line1, character 3
+#define		Ln1Ch4		0x84		//character position for line1, character 4
+#define		Ln1Ch5		0x85		//character position for line1, character 5
+#define		Ln1Ch6		0x86		//character position for line1, character 6
+#define		Ln1Ch7		0x87		//character position for line1, character 7
+#define		Ln1Ch8		0x88		//character position for line1, character 8
+#define		Ln1Ch9		0x89		//character position for line1, character 9
+#define		Ln1Ch10 	0x8A		//character position for line1, character 10
+#define		Ln1Ch11		0x8B		//character position for line1, character 11
+#define		Ln1Ch12		0x8C		//character position for line1, character 12
+#define		Ln1Ch13		0x8D		//character position for line1, character 13
+#define		Ln1Ch14		0x8E		//character position for line1, character 14
+#define		Ln1Ch15		0x8F		//character position for line1, character 15
+#define		Ln1Ch16		0x90		//character position for line1, character 16
+#define		Ln1Ch17		0x91		//character position for line1, character 17
+#define		Ln1Ch18		0x92		//character position for line1, character 18
+#define		Ln1Ch19		0x93		//character position for line1, character 19
+
+#define		Ln2Ch0		0xC0		//character position for line2, character 0
+#define		Ln2Ch1		0xC1		//character position for line2, character 1
+#define		Ln2Ch2		0xC2		//character position for line2, character 2
+#define		Ln2Ch3		0xC3		//character position for line2, character 3
+#define		Ln2Ch4		0xC4		//character position for line2, character 4
+#define		Ln2Ch5		0xC5		//character position for line2, character 5
+#define		Ln2Ch6		0xC6		//character position for line2, character 6
+#define		Ln2Ch7		0xC7		//character position for line2, character 7
+#define		Ln2Ch8		0xC8		//character position for line2, character 8
+#define		Ln2Ch9		0xC9		//character position for line2, character 9
+#define		Ln2Ch10 	0xCA		//character position for line2, character 10
+#define		Ln2Ch11		0xCB		//character position for line2, character 11
+#define		Ln2Ch12		0xCC		//character position for line2, character 12
+#define		Ln2Ch13		0xCD		//character position for line2, character 13
+#define		Ln2Ch14		0xCE		//character position for line2, character 14
+#define		Ln2Ch15		0xCF		//character position for line2, character 15
+#define		Ln2Ch16		0xD0		//character position for line2, character 16
+#define		Ln2Ch17		0xD1		//character position for line2, character 17
+#define		Ln2Ch18		0xD2		//character position for line2, character 18
+#define		Ln2Ch19		0xD3		//character position for line2, character 19					
+
+#define		Ln3Ch0		0x94		//character position for line3, character 0
+#define		Ln3Ch1		0x95		//character position for line3, character 1
+#define		Ln3Ch2		0x96		//character position for line3, character 2
+#define		Ln3Ch3		0x97		//character position for line3, character 3
+#define		Ln3Ch4		0x98		//character position for line3, character 4
+#define		Ln3Ch5		0x99		//character position for line3, character 5
+#define		Ln3Ch6		0x9A		//character position for line3, character 6
+#define		Ln3Ch7		0x9B		//character position for line3, character 7
+#define		Ln3Ch8		0x9C		//character position for line3, character 8
+#define		Ln3Ch9		0x9D		//character position for line3, character 9
+#define		Ln3Ch10 	0x9E 		//character position for line3, character 10
+#define		Ln3Ch11		0x9F		//character position for line3, character 11
+#define		Ln3Ch12		0xA0		//character position for line3, character 12
+#define		Ln3Ch13		0xA1		//character position for line3, character 13
+#define		Ln3Ch14		0xA2		//character position for line3, character 14
+#define		Ln3Ch15		0xA3		//character position for line3, character 15
+#define		Ln3Ch16		0xA4		//character position for line3, character 16
+#define		Ln3Ch17		0xA5		//character position for line3, character 17
+#define		Ln3Ch18		0xA6		//character position for line3, character 18
+#define		Ln3Ch19		0xA7		//character position for line3, character 19
+
+#define		Ln4Ch0		0xD4		//character position for line4, character 0
+#define		Ln4Ch1		0xD5		//character position for line4, character 1
+#define		Ln4Ch2		0xD6		//character position for line4, character 2
+#define		Ln4Ch3		0xD7		//character position for line4, character 3
+#define		Ln4Ch4		0xD8		//character position for line4, character 4
+#define		Ln4Ch5		0xD9		//character position for line4, character 5
+#define		Ln4Ch6		0xDA		//character position for line4, character 6
+#define		Ln4Ch7		0xDB		//character position for line4, character 7
+#define		Ln4Ch8		0xDC		//character position for line4, character 8
+#define		Ln4Ch9		0xDD		//character position for line4, character 9
+#define		Ln4Ch10 	0xDE		//character position for line4, character 10
+#define		Ln4Ch11		0xDF		//character position for line4, character 11
+#define		Ln4Ch12		0xE0		//character position for line4, character 12
+#define		Ln4Ch13		0xE1		//character position for line4, character 13
+#define		Ln4Ch14		0xE2		//character position for line4, character 14
+#define		Ln4Ch15		0xE3		//character position for line4, character 15
+#define		Ln4Ch16		0xE4		//character position for line4, character 16
+#define		Ln4Ch17		0xE5		//character position for line4, character 17
+#define		Ln4Ch18		0xE6		//character position for line4, character 18
+#define		Ln4Ch19		0xE7		//character position for line4, character 19

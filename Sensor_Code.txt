@@ -1,0 +1,223 @@
+	#include <p18cxxx.h>		//include the pic 18 library
+	#include <delays.h>		//include the delays library
+	#include "LCD4xlib.h"		//include the LCD library 
+	#include "LCDdefs.h"		//defines LCD lines and characters
+	
+	
+	unsigned long a;			// global variable "a" refers to TMR0H
+	double b;			// global variable "b" refers to distance
+	unsigned long c;			// global variable "c" refers to TMR0L
+	
+	void SetupUltrasonic(void);
+	char Digits[3];			//creates an array to display the values
+	
+	
+	void main (void)
+	{	PORTA= 0x00;		//initial state for the LEDs on PortA and PortB is set to 0
+	PORTBbits.RB4=0;
+	PORTBbits.RB5=0;
+	PORTBbits.RB6=0;
+	PORTBbits.RB7=0;
+	b=0;				//initial distance = 0
+	
+	OSCCON=0x50;			//internal oscillator
+	OSCTUNEbits.INTSRC = 0;
+	OSCTUNEbits.PLLEN = 0;
+	
+	SetupUltrasonic();
+	InitLCD();			//initializing the LCD
+	DispRomStr(Ln1Ch0, (ROM *) "Developed by");		//LCD starts writing
+	DispRomStr(Ln2Ch0, (ROM *) "Chris & Ziad");
+	Delay10KTCYx(1000);
+	DispRomStr(Ln1Ch0,(ROM *) "Distance =    cm");
+	DispRomStr(Ln2Ch0,(ROM *) "                 ");
+	
+	
+	while(1)
+	{
+		TMR0H =0;				//Sets the initial value of time
+		TMR0L =0;				//Sets the initial value of time
+		
+	
+		
+		PORTBbits.RB1=1;				//Trigger High
+		Delay10TCYx(1);				//Delay 10 us
+		PORTBbits.RB1=0;				//Trigger Low
+	
+		while(!PORTBbits.RB0);			//Waiting for echo
+		T0CONbits.TMR0ON =1;			//Timer starts
+		while(PORTBbits.RB0);			//Waiting for echo to go Low
+	{
+		T0CONbits.TMR0ON =0;			//Timer stops
+	}
+		c = TMR0L;				//Reads timer value
+		a = TMR0H;
+		a = c|(a<<8);			
+	
+		b= 340 *(double) a/1000000;		//Converts time to distance
+		if(b<0.1)				//if distance is below 10cm 
+		{
+	
+	
+	
+		PORTA = 0b01111111;			//Light 10 LEDs
+		PORTBbits.RB6 =1;	
+		PORTBbits.RB7 =1;
+		PORTBbits.RB5 =1;
+	
+		PORTBbits.RB4 = 1;			//Buzzer beeps
+		
+		
+	
+		}
+		if(b>=0.1 && b<0.2)			//if distance is between 10 and 20 cm
+		{
+	
+		
+		PORTA = 0b01111111;			//Lights 9 LEDs	
+		PORTBbits.RB6 =1;	
+		PORTBbits.RB7 =0;
+		PORTBbits.RB5 =1;
+	
+		PORTBbits.RB4 = 1;			//Buzzer beeps
+		Delay10KTCYx(5);
+		PORTBbits.RB4 = 0;
+		Delay10KTCYx(5);
+		
+		}
+		if(b>=0.2 && b<0.3)			//If distance is between 20 and 30 cm
+		{
+	
+	
+	
+		PORTA = 0b01111111;			//Light 8 LEDs
+		PORTBbits.RB6 =0;	
+		PORTBbits.RB7 =0;
+		PORTBbits.RB5 =1;
+	
+		PORTBbits.RB4 = 1;			//Buzzer beeps
+		Delay10KTCYx(10);
+		PORTBbits.RB4 = 0;
+		Delay10KTCYx(10);
+		}
+		if(b>=0.3 && b<0.4)			//if distance is between 30 and 40 cm
+	    {
+	
+		
+	
+		PORTA = 0b01111111;			//Light 7 LEDs
+		PORTBbits.RB6 =0;	
+		PORTBbits.RB7 =0;
+		PORTBbits.RB5 =0;
+	
+		PORTBbits.RB4 = 1;			//Buzzer beeps
+		Delay10KTCYx(20);
+		PORTBbits.RB4 = 0;
+		Delay10KTCYx(20);
+		}
+		if(b>=0.4 && b<0.5)			//if distance is between 40 and 50 cm
+		{
+	
+	
+	
+		PORTA = 0b00111111;			//Light 6 LEDs
+		PORTBbits.RB6 =0;	
+		PORTBbits.RB7 =0;
+		PORTBbits.RB5 =0;
+	
+		PORTBbits.RB4 = 1;			//Buzzer beeps
+		Delay10KTCYx(30);
+		PORTBbits.RB4 = 0;
+		Delay10KTCYx(30);
+		}
+		if(b>=0.5 && b<0.6)			//if distance is between 50 and 60 cm
+		{
+	
+	
+	
+		PORTA = 0b00011111;			//Light 5 LEDs
+		PORTBbits.RB6 =0;	
+		PORTBbits.RB7 =0;
+		PORTBbits.RB5 =0;
+	
+		PORTBbits.RB4 = 1;			//Buzzer beeps
+		Delay10KTCYx(40);
+		PORTBbits.RB4 = 0;
+		Delay10KTCYx(40);
+		}
+		if(b>=0.6 && b<0.7)			//if distance is between 60 and 70 cm
+		{
+	
+	
+	
+		PORTA = 0b00001111;			//Light 4 LEDs
+		PORTBbits.RB6 =0;	
+		PORTBbits.RB7 =0;
+		PORTBbits.RB5 =0;
+	
+		PORTBbits.RB4 = 1;			//Buzzer beeps
+		Delay10KTCYx(50);
+		PORTBbits.RB4 = 0;
+		Delay10KTCYx(50);
+		}
+		if(b>=0.7 && b<0.8)			//if distance is between 70 and 80 cm
+		{
+	
+	
+	
+		PORTA = 0b00000111;			//Light 3 LEDs
+		PORTBbits.RB6 =0;	
+		PORTBbits.RB7 =0;
+		PORTBbits.RB5 =0;
+	
+		PORTBbits.RB4 = 1;			//Buzzer beeps
+		Delay10KTCYx(50);
+		PORTBbits.RB4 = 0;
+		Delay10KTCYx(60);
+		}
+		if(b>=0.8 && b<0.9)			//if distance is between 80 and 90 cm
+		{
+	
+	
+	
+		PORTA = 0b00000011;			//Light 2 LEDs
+		PORTBbits.RB6 =0;	
+		PORTBbits.RB7 =0;
+		PORTBbits.RB5 =0;
+	
+		PORTBbits.RB4 = 1;			//Buzzer beeps
+		Delay10KTCYx(50);
+		PORTBbits.RB4 = 0;
+		Delay10KTCYx(80);
+		}
+		if(b>=1)					//if distance is above 1 m
+		{
+	
+	
+	
+		PORTA = 0b00000001;			//Light 1 LED
+		PORTBbits.RB6 =0;	
+		PORTBbits.RB7 =0;
+		PORTBbits.RB5 =0;
+	
+		PORTBbits.RB4 = 1;			//Buzzer beeps
+		Delay10KTCYx(50);
+		PORTBbits.RB4 = 0;
+		Delay10KTCYx(100);
+		}
+
+		Bin2AscE(b*100,Digits);			//Converting distance from meter to centimeter
+		DispVarStr(&Digits[2],Ln1Ch10,3);		//Displays the distance on the LCD
+	}
+	}
+	
+
+	void SetupUltrasonic(void)			//initial setup
+	{
+	TRISB = 0x01;
+	ANSELB = 0x00;
+	T0CON = 0x00;
+	TRISC = 0x00;
+	ANSELC = 0x00;
+	TRISA = 0x00;
+	ANSELA=0x00;	
